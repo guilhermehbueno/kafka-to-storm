@@ -24,7 +24,7 @@ public class MyKafkaSpout extends BaseRichSpout{
 
 	public void open(Map conf, TopologyContext context, SpoutOutputCollector collector) {
 		this.collector = collector;
-		this.consumer = new Consumer("twitter", queue);
+		this.consumer = new Consumer("test", queue);
 		this.consumer.start();
 	}
 

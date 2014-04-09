@@ -12,6 +12,7 @@ public class PrinterBolt extends BaseBasicBolt {
 
 	public void execute(Tuple tuple, BasicOutputCollector collector) {
         System.out.println("PrinterBolt: "+tuple.getString(0));
+     
     }
 
     public void declareOutputFields(OutputFieldsDeclarer ofd) {

@@ -42,6 +42,12 @@ public class Producer extends Thread
     {
       String messageStr = new String("Message_" + messageNo);
       producer.send(new KeyedMessage<Integer, String>(topic, messageStr));
+      try {
+		Thread.sleep(1000);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
       messageNo++;
     }
   }
