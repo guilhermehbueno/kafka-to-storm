@@ -71,8 +71,13 @@ public class Consumer extends Thread
     ConsumerIterator<byte[], byte[]> it = stream.iterator();
     System.out.println("Getting messages");
     while(it.hasNext()){
-    	System.out.println(new String(it.next().message()));
-    	System.out.println("check messages...");
+    	String message = new String(it.next().message());
+    	System.out.println("check messages..."+ message);
+    	try {
+			this.queue.put(message);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
     }
   }
 }
