@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.LinkedBlockingQueue;
 
 import com.poc.kafka.properties.KafkaProperties;
 
@@ -34,11 +35,20 @@ public class Consumer extends Thread
 {
   private final ConsumerConnector consumer;
   private final String topic;
+  private final LinkedBlockingQueue<String> queue;
   
   public Consumer(String topic)
   {
     consumer = kafka.consumer.Consumer.createJavaConsumerConnector(createConsumerConfig());
     this.topic = topic;
+    this.queue = new LinkedBlockingQueue<String>();
+  }
+  
+  public Consumer(String topic, LinkedBlockingQueue<String> queueParam)
+  {
+    consumer = kafka.consumer.Consumer.createJavaConsumerConnector(createConsumerConfig());
+    this.topic = topic;
+    this.queue = queueParam;
   }
 
   private static ConsumerConfig createConsumerConfig()
