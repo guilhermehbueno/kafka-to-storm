@@ -11,6 +11,7 @@ bin/kafka-server-start.sh config/server.properties
 
 Running poc do kafka:
 mvn clean compile exec:java -Dexec.mainClass=com.poc.kafka.main.MyKafka -Dexec.args="topic_name"
+mvn clean compile exec:java -Dexec.mainClass=com.poc.kafka.main.MyMultiConsumerKafka -Dexec.args="price popularity"
 
 Gerando o jar para o Storm:
 mvn clean compile assembly:single
