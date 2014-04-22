@@ -1,7 +1,6 @@
 package com.poc.kafka.main;
 
 import com.poc.kafka.consumer.Consumer;
-import com.poc.kafka.producer.Producer;
 import com.poc.kafka.properties.KafkaProperties;
 
 public class MyKafka {
@@ -12,8 +11,10 @@ public class MyKafka {
 			topic = args[0];
 		}
 		
+		/*
 		Producer producer = new Producer(topic);
 		producer.start();
+		*/
 		
 		Consumer consumer = new Consumer(topic);
 		consumer.start();

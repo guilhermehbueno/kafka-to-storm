@@ -67,12 +67,12 @@ public class Consumer extends Thread
     topicCountMap.put(topic, new Integer(1));
     System.out.println("Listening topics: "+topic);
     Map<String, List<KafkaStream<byte[], byte[]>>> consumerMap = consumer.createMessageStreams(topicCountMap);
-    KafkaStream<byte[], byte[]> stream =  consumerMap.get(topic).get(0);
+    KafkaStream<byte[], byte[]> stream =  consumerMap. get(topic).get(0);
     ConsumerIterator<byte[], byte[]> it = stream.iterator();
     System.out.println("Getting messages");
     while(it.hasNext()){
     	String message = new String(it.next().message());
-    	System.out.println("check messages..."+ message);
+    	System.out.println("receiving message: "+ message);
     	try {
 			this.queue.put(message);
 		} catch (InterruptedException e) {
